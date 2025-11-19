@@ -1,5 +1,7 @@
-import {Column, PrimaryGeneratedColumn} from 'typeorm'
+import {Column, PrimaryGeneratedColumn,Entity} from 'typeorm'
 
+
+@Entity()
 export class Product {
     @PrimaryGeneratedColumn()
     id: number; 
