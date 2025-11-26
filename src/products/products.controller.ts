@@ -3,6 +3,7 @@ import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { Product } from './entities/product.schema';
+import { CodigoFind } from './Response/productoCodigo.response';
 
 @Controller('products')
 export class ProductsController {   
@@ -33,7 +34,7 @@ export class ProductsController {
     }
 
     @Get('code/:code')
-    async findByCode(@Param('code') code: string) {
-        return this.productsService.findCode({ codigo_barras: code });
+    async findByCode(@Param('code') code:string ) {
+        return this.productsService.findCode({codigo_barras: code});
     }
 }

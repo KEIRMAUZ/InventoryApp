@@ -4,6 +4,7 @@ import { InjectModel,MongooseModule } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
+import { CodigoFind } from './Response/productoCodigo.response';
 
 @Injectable()
 export class ProductsService {
@@ -27,10 +28,10 @@ export class ProductsService {
     async remove(id:string) {
         return this.productModel.findByIdAndDelete(id);
     }
-    async findCode(code:UpdateProductDto){
-        const codigo = code.codigo_barras
-        return this.productModel.findOne({
-            codigo_barras: codigo
-        })
+    async findCode(code:CodigoFind){
+        const productFind = await this.productModel.findOne({
+            codigo_barras: code.codigo_barras
+        });
+        return productFind
     }
 }
