@@ -7,4 +7,5 @@ export class UpdateProductDto {
     fecha_caducidad?: string; 
     codigo_barras?:string;
     stock?:number;
+    proveedor?: string;
 }   
