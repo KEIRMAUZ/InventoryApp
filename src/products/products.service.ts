@@ -27,4 +27,10 @@ export class ProductsService {
     async remove(id:string) {
         return this.productModel.findByIdAndDelete(id);
     }
+    async findCode(code:UpdateProductDto){
+        const codigo = code.codigo_barras
+        return this.productModel.findOne({
+            codigo_barras: codigo
+        })
+    }
 }

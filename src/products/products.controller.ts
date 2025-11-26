@@ -31,4 +31,9 @@ export class ProductsController {
     async remove(@Param('id') id: string) {
         return this.productsService.remove(id);
     }
+
+    @Get('code/:code')
+    async findByCode(@Param('code') code: string) {
+        return this.productsService.findCode({ codigo_barras: code });
+    }
 }
