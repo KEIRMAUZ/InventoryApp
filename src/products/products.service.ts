@@ -21,6 +21,7 @@ export class ProductsService {
     
     async findOne(id:string){ 
         return this.productModel.findById(id);
+
     }
     async update(id: string, updateProductDto: UpdateProductDto) {
         return this.productModel.findByIdAndUpdate(id, updateProductDto);
@@ -31,7 +32,10 @@ export class ProductsService {
     async findCode(code:CodigoFind){
         const productFind = await this.productModel.findOne({
             codigo_barras: code.codigo_barras
-        });
+        }).exec();
+        if(!productFind){
+            throw new HttpException('Producto no encontrado',404);
+        }
         return productFind
     }
 }
